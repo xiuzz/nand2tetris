@@ -6,6 +6,8 @@
 /**
  * Exclusive-or gate:
  * out = not (a == b)
+ 因为a != b 所以 !a = b , !b = a ,且 true ,则a,b 至少有一个为1
+ 所以 Xor(a,b) = Or(And(Not(a),b),And(Not(b),a))
  */
 
 CHIP Xor {
@@ -14,4 +16,9 @@ CHIP Xor {
 
     PARTS:
     // Put your code here:
+    Not(in=a, out=nota);
+    And(a=nota, b=b, out=o1);
+    Not(in=b, out=notb);
+    And(a=notb, b=a, out=o2);
+    Or(a=o1, b=o2, out=out);
 }
