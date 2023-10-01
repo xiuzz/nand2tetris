@@ -9,6 +9,7 @@
  *                {0, in, 0, 0} if sel == 01
  *                {0, 0, in, 0} if sel == 10
  *                {0, 0, 0, in} if sel == 11
+ 选择该way当前每一位都与之对应做and
  */
 
 CHIP DMux4Way {
@@ -17,4 +18,7 @@ CHIP DMux4Way {
 
     PARTS:
     // Put your code here:
+    DMux(in=in, sel=sel[1], a=bit0, b=bit1);
+    DMux(in=bit0, sel=sel[0], a=a, b=b);
+    DMux(in=bit1, sel=sel[0], a=c, b=d);
 }

@@ -8,7 +8,7 @@
  * out = a if sel == 0
  *       b otherwise
 这个等价于用sel = 1 的假设情况 去覆盖 a， 反之 覆盖 b
-Or(Xor(a,sel),And(b,sel))
+Or(And(a,Not(sel)),And(b,sel))
  */
 
 CHIP Mux {
@@ -17,5 +17,8 @@ CHIP Mux {
 
     PARTS:
     // Put your code here:
-    Nand(a=a, b=, out=);
+    Not(in=sel, out=rsel);
+    And(a=a, b=rsel, out=o1);
+    And(a=b, b=sel, out=o2);
+    Or(a=o1, b=o2, out=out);
 }

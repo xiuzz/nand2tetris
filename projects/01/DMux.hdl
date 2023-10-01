@@ -7,6 +7,7 @@
  * Demultiplexor:
  * {a, b} = {in, 0} if sel == 0
  *          {0, in} if sel == 1
+{And(in,Not(sel)),And(in,sel)}
  */
 
 CHIP DMux {
@@ -15,4 +16,7 @@ CHIP DMux {
 
     PARTS:
     // Put your code here:
+    Not(in=sel, out=rsel);
+    And(a=in, b=rsel, out=a);
+    And(a=in, b=sel, out=b);
 }
