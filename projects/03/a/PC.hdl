@@ -17,4 +17,10 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
+    Inc16(in=preOut, out=prePro);
+    Mux16(a=preOut, b=prePro, sel=inc, out=tmp1);
+    Mux16(a=tmp1, b=in, sel=load, out=tmp2);
+    Mux16(a=tmp2, b=false, sel=reset, out=tmp3);
+    //突然明白什么是时序逻辑了,pc给我的感觉就是放大了load的控制
+    Register(in=tmp3, load=true, out=preOut, out=out);
 }
