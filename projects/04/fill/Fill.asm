@@ -12,6 +12,36 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+// for (int i = screen; i <= 24575; i++)  16bit > -1
+(LOOP)
+@0
+M=0
+@24576
+D=M
+@FLAG
+D;JEQ
+@0
+M=-1
+(FLAG)
 @SCREEN
-
-M=1
+D=A
+@1
+M=D-1
+(LOOP2)
+@0
+D=M
+@1
+M=M+1
+A=M
+M=D
+@24575
+D=A
+@1
+D=M-D
+@FLAG2
+D;JEQ
+@LOOP2
+(FLAG2)
+0;JEQ
+@LOOP
+0;JMP
