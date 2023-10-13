@@ -13,8 +13,9 @@
 
 // Put your code here.
 // for (int i = screen; i <= 24575; i++)  16bit > -1
+//A : -> address M: -> data D: -> tmp
 (LOOP)
-@0
+@0  
 M=0
 @24576
 D=M
